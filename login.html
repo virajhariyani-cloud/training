@@ -1,126 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Modish Login Form</title>
-<meta name="viewport" content="width=device-with, initial-scale1.0">
-
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: url("asset/login-background.png") no-repeat center center ;
-    background-size: cover;
-    font-family: Arial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.header-title {
-    font-family: 'Brush Script MT', cursive;
-    font-size: 36px;
-    font-style: italic;
-    color: rgb(15, 5, 5);
-    position: absolute;
-    top: 15%;
-    text-align: center;
-}
-
-.red {
-    color: red;
-}
-
-
-
-.login-box {
-    background: rgba(5, 5, 5, 0.527);
-    backdrop-filter: blur(10px);
-    padding: 20px 25px;
-    border-radius: 10px;
-    width: 320px;
-    text-align: center;
-    color: white;
-}
-
-.login-icon {
-    width: 19px;   
-    height: 19px;
-    vertical-align: middle;
-}
-
-
-.login-box h3 {
-    font-size: 18px;
-    font-weight: normal;
-    margin-bottom: 12px;
-}
-
-
-.input-box {
-    width: 80%;
-    padding: 10px 10px 10px 35px;
-    margin: 8px 0;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-}
-
-
-.email {
-    background: white url("asset/email1.png") no-repeat 8px center;
-    background-size: 18px;
-}
-
-
-.password {
-    background: white url("asset/password.png") no-repeat 8px center;
-    background-size: 16px;
-}
-
-
-.submit-btn {
-    margin-top: 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 40%;
-    background: rgba(247, 245, 245, 0.993) url("asset/submitlogo.png") no-repeat center;
-    background-size: 20px;
-    border: none;
-    cursor: pointer;
-}
-
-
-.footer {
-    margin-top: 50px;
-    font-size: 15px;
-    color: rgb(0, 2, 3);
-}
-</style>
-
+    <title>Modish Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
-<div class="header-title">
-  <span class="red">M</span>odish 
-  <span class="red">L</span>ogin 
-  <span class="red">F</span>orm
-</div>
-
-
-<div class="login-box">
-    <h3>Login Here <img src="asset/loginhere1.png" class="login-icon"></h3>
-
-    <input class="input-box email" type="text" placeholder="Email">
-    <input class="input-box password" type="password" placeholder="Password">
-
-    <button class="submit-btn"></button>
-</div>
-
-
-<div class="footer"><b>© 2026 Modish Login Form. All rights reserved.</b></div>
-
+    <div class="header-title">
+        <span class="red">M</span>odish 
+        <span class="red">L</span>ogin 
+        <span class="red">F</span>orm
+    </div>
+    <form class="login-box">
+        <div class="login-title">
+            <p>Login Here</p>
+            <div class="login-icon"></div>
+            <!-- <span class="login-icon"></span> -->
+        </div>
+        <input class="input-box email" type="text" placeholder="Email">
+        <input class="input-box password" type="password" placeholder="Password">
+        <button class="submit-btn"></button>
+    </form>
+    <footer class="footer">
+        © 2026 Modish Login Form. All rights reserved| Designed by  <i class="red"> Viraj</i>
+    </footer>
 </body>
 </html>
 
