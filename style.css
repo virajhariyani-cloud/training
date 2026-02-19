@@ -13,15 +13,15 @@ body {
 h1 {
     font-family:cursive;
     font-size: 50px;
-    font-style: 'Playball',cursive;
+    font-style:cursive;
     font-weight: normal;
     color: white;
     margin-bottom: 80px;
     text-align: center;
 }
 
-.red {
-    color: #ff2e2e;
+.highlight-letter { 
+    color: #e92222;
 }
 
 .login-box {
