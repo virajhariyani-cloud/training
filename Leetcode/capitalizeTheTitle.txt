@@ -1,0 +1,12 @@
+class Solution:
+    def capitalizeTitle(self, title: str) -> str:
+        words = title.split()
+
+        for i in range(len(words)):
+            word = words[i].lower()
+            if len(word) > 2:
+                word = word[0].upper() + word[1:]
+            words[i]=word
+            
+        return " ".join(words)
+        
