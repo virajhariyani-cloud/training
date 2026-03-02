@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeApp | About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+<header class="bg-black/80 backdrop-blur-md fixed w-full z-50 shadow-lg">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
+    <h1 class="text-2xl font-bold tracking-wide text-orange-400">
+      🍴 RecipeApp
+    </h1>
+    <ul class="hidden md:flex space-x-8 font-medium">
+      <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+      <li><a href="about.html" class="text-orange-400">About</a></li>
+      <li><a href="recipe.html" class="hover:text-orange-400 transition">Recipe</a></li>
+    </ul>
+    <button id="menu-btn" class="md:hidden focus:outline-none text-white">
+      ☰
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden bg-black/90 text-white px-6 pb-4">
+    <ul class="space-y-4 font-medium">
+      <li><a href="home.html" class="block hover:text-orange-400">Home</a></li>
+      <li><a href="about.html" class="block text-orange-400">About</a></li>
+      <li><a href="recipe.html" class="block hover:text-orange-400">Recipe</a></li>
+    </ul>
+  </div>
+</header>
+<section class="pt-28 pb-16 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+      About RecipeApp
+    </h2>
+    <p class="text-lg md:text-xl opacity-90">
+      A modern and simple solution to manage your favorite recipes.
+    </p>
+  </div>
+</section>
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <div class="bg-white rounded-2xl shadow-lg p-10 mb-12">
+    <h3 class="text-2xl font-bold mb-4 text-gray-800">Our Mission</h3>
+    <p class="text-gray-600 leading-relaxed text-lg">
+      RecipeApp is a modern recipe management system designed to make
+      organizing your favorite dishes simple and efficient.
+      You can easily add, update, and delete recipes while keeping everything
+      structured in one place.
+      </p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-3 text-orange-500">➕ Add Recipes</h4>
+      <p class="text-gray-600">
+        Quickly create and store new recipes with simple input forms.
+      </p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-3 text-orange-500">✏️ Edit Anytime</h4>
+      <p class="text-gray-600">
+        Update your recipes whenever you want with ease.
+      </p>
+    </div>
+    <div class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition">
+      <h4 class="text-xl font-semibold mb-3 text-orange-500">🗑️ Delete Easily</h4>
+      <p class="text-gray-600">
+        Remove recipes you no longer need in just one click.
+      </p>
+    </div>
+  </div>
+</section>
+<footer class="bg-black text-gray-400 text-center py-4 text-sm">
+  © 2026 RecipeApp. All rights reserved.
+</footer>
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+</body>
+</html>

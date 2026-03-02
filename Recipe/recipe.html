@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeApp | Recipes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+<header class="bg-black/80 backdrop-blur-md fixed w-full z-50 shadow-lg">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center text-white">
+    <h1 class="text-2xl font-bold tracking-wide text-orange-400">
+      🍴 RecipeApp
+    </h1>
+    <ul class="hidden md:flex space-x-8 font-medium">
+      <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+      <li><a href="about.html" class="hover:text-orange-400 transition">About</a></li>
+      <li><a href="recipe.html" class="text-orange-400">Recipe</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="max-w-7xl mx-auto pt-28 px-6 pb-16">
+  <div class="bg-white p-8 rounded-2xl shadow-xl mb-10">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">
+      Add / Update Recipe
+    </h2>
+    <form id="recipeForm" class="grid md:grid-cols-2 gap-6">
+      <input type="text" id="id" placeholder="Recipe ID"
+        class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      <input type="text" id="name" placeholder="Recipe Name"
+        class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      <input type="text" id="category" placeholder="Category"
+        class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      <input type="text" id="designation" placeholder="Description"
+        class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      <button type="submit"
+        class="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-lg font-semibold transition transform hover:scale-105 shadow-md">
+        Save Recipe
+      </button>
+    </form>
+  </div>
+  <div class="bg-white p-8 rounded-2xl shadow-xl overflow-x-auto">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">
+      Recipe List
+    </h2>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-orange-100 text-gray-800">
+          <th class="p-4">ID</th>
+          <th class="p-4">Name</th>
+          <th class="p-4">Category</th>
+          <th class="p-4">Description</th>
+          <th class="p-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="recipeTable"></tbody>
+    </table>
+  </div>
+</div>
+<footer class="bg-black text-gray-400 text-center py-4 text-sm">
+  © 2026 RecipeApp. All rights reserved.
+</footer>
+<script src="recipe.js"></script>
+</body>
+</html>
