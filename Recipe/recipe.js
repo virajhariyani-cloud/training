@@ -1,70 +1,94 @@
 let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+let editingIndex = null;
 const form = document.getElementById("recipeForm");
 const table = document.getElementById("recipeTable");
-function displayRecipes() {
-  if (!table) return;
-  table.innerHTML = "";
-  recipes.forEach((recipe, index) => {
-    table.innerHTML += `
-      <tr class="border-b hover:bg-gray-50 transition">
-        <td class="p-4">${recipe.id}</td>
-        <td class="p-4">${recipe.name}</td>
-        <td class="p-4">${recipe.category}</td>
-        <td class="p-4">${recipe.designation}</td>
-        <td class="p-4 space-x-2">
-          <button onclick="editRecipe(${index})"
-            class="bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded-lg transition">
-            Edit
-          </button>
-          <button onclick="deleteRecipe(${index})"
-            class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition">
-            Delete
-          </button>
-        </td>
-      </tr>
-    `;
-  });
+const idInput = document.getElementById("id");
+const exitBtn = document.getElementById("exitBtn");
+
+function getNextId() {
+  if (recipes.length === 0) return 1;
+  const maxId = Math.max(...recipes.map(r => Number(r.id)));
+  return maxId + 1;
+}
+
+function prepareNewRecipe() {
+  idInput.value = getNextId();
+}
+
+function saveToStorage() {
   localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
-if (form) {
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const id = document.getElementById("id").value.trim();
-    const name = document.getElementById("name").value.trim();
-    const category = document.getElementById("category").value.trim();
-    const designation = document.getElementById("designation").value.trim();
-    if (!id || !name || !category || !designation) {
-      alert("All fields are required! Please fill in every field.");
-      return;
-    }
-    const idExists = recipes.some(recipe => recipe.id === id);
-    if (idExists) {
-      alert("This ID already exists! Please use a unique ID.");
-      return;
-    }
-    const recipe = { id, name, category, designation };
-    recipes.push(recipe);
-    form.reset();
-    displayRecipes();
-    alert("Recipe saved successfully!");
+function displayRecipes() {
+  table.textContent = "";
+  recipes.forEach((recipe, index) => {
+    const row = table.insertRow();
+    row.insertCell().textContent = recipe.id;
+    row.insertCell().textContent = recipe.name;
+    row.insertCell().textContent = recipe.category;
+    row.insertCell().textContent = recipe.designation;
+    const actionCell = row.insertCell();
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.className =
+      "bg-yellow-400 hover:bg-yellow-500 px-3 py-1 rounded-lg transition";
+    editBtn.addEventListener("click", () => editRecipe(index));
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className =
+      "bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition";
+    deleteBtn.addEventListener("click", () => deleteRecipe(index));
+    actionCell.append(editBtn, deleteBtn);
   });
+  saveToStorage();
 }
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const id = idInput.value;
+  const name = document.getElementById("name").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const designation = document.getElementById("designation").value.trim();
+  if (!name || !category || !designation) {
+    alert("All fields are required!");
+    return;
+  }
+  if (editingIndex !== null) {
+    recipes[editingIndex] = { id, name, category, designation };
+    editingIndex = null;
+  } else {
+    recipes.push({ id, name, category, designation });
+  }
+  form.reset();
+  displayRecipes();
+  prepareNewRecipe();
+});
+
 function deleteRecipe(index) {
-  const confirmDelete = confirm("Are you sure you want to delete this recipe?");
-  if (confirmDelete) {
+  if (confirm("Delete this recipe?")) {
     recipes.splice(index, 1);
     displayRecipes();
+    prepareNewRecipe();
   }
 }
 
 function editRecipe(index) {
   const recipe = recipes[index];
-  document.getElementById("id").value = recipe.id;
+  idInput.value = recipe.id;
   document.getElementById("name").value = recipe.name;
   document.getElementById("category").value = recipe.category;
   document.getElementById("designation").value = recipe.designation;
-  recipes.splice(index, 1);
+  editingIndex = index;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+exitBtn.addEventListener("click", function () {
+  if (confirm("Are you sure you want to exit?")) {
+    form.reset();
+    editingIndex = null;
+    prepareNewRecipe();
+    window.location.href = "index.html";
+  }
+});
 displayRecipes();
+prepareNewRecipe();

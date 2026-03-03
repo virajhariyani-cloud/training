@@ -25,17 +25,21 @@
       Add / Update Recipe
     </h2>
     <form id="recipeForm" class="grid md:grid-cols-2 gap-6">
-      <input type="text" id="id" placeholder="Recipe ID"
+      <input type="text" id="id" placeholder="Recipe ID" readonly
+        class="border p-3 rounded-xl bg-gray-100">
+      <input type="text" id="name" placeholder="Recipe Name" required
         class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
-      <input type="text" id="name" placeholder="Recipe Name"
+      <input type="text" id="category" placeholder="Category" required
         class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
-      <input type="text" id="category" placeholder="Category"
-        class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
-      <input type="text" id="designation" placeholder="Description"
+      <input type="text" id="designation" placeholder="Description" required
         class="border p-3 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
       <button type="submit"
-        class="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-lg font-semibold transition transform hover:scale-105 shadow-md">
+        class="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-lg font-semibold transition">
         Save Recipe
+      </button>
+      <button type="button" id="exitBtn"
+        class="md:col-span-2 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-xl text-lg font-semibold transition">
+        Exit
       </button>
     </form>
   </div>
